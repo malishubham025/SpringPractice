@@ -1,11 +1,14 @@
 package com.example.rest_api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.rest_api.service.userStructure;
 import com.example.rest_api.repo.model;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import com.example.rest_api.service.getUser;
 @RestController
 public class controller {
@@ -29,7 +32,7 @@ public class controller {
         user.updateUser(newUser);
     }
     @PostMapping("/deleteUser")
-    ArrayList<userStructure> deleteUser(@RequestBody userStructure deleteUser){
-        return new ArrayList<>(user.deleteUser(deleteUser));
+    ResponseEntity<?> deleteUser(@RequestBody userStructure deleteUser){
+        return user.deleteUser(deleteUser);
     }
 }
